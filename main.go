@@ -1,15 +1,16 @@
 package main
 
 import (
+	"APIREST-GO1.0/configs" //add this
+
 	"github.com/gofiber/fiber/v2"
 )
 
 func main() {
 	app := fiber.New()
 
-	app.Get("/", func(c *fiber.Ctx) error {
-		return c.JSON(&fiber.Map{"data": "Hello from Fiber & mongoDB"})
-	})
+	//run database
+	configs.ConnectDB()
 
 	app.Listen(":8000")
 }
