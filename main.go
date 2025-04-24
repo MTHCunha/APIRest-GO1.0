@@ -1,7 +1,8 @@
 package main
 
 import (
-	"APIREST-GO1.0/configs" //add this
+	"github.com/MTHCunha/gocdd/configs"
+	"github.com/MTHCunha/gocdd/routes"
 
 	"github.com/gofiber/fiber/v2"
 )
@@ -9,8 +10,9 @@ import (
 func main() {
 	app := fiber.New()
 
-	//run database
 	configs.ConnectDB()
+
+	routes.UserRoute(app)
 
 	app.Listen(":8000")
 }
